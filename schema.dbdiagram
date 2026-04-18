@@ -1,0 +1,241 @@
+{
+  "version": "1.0.0",
+  "darkMode": true,
+  "gridEnabling": false,
+  "detailLevel": "All",
+  "tablePositions": [
+    {
+      "name": "users",
+      "schemaName": "public",
+      "x": 5.812594410983763,
+      "y": -61.76565666977848
+    },
+    {
+      "name": "groups",
+      "schemaName": "public",
+      "x": -79.28231562500002,
+      "y": 195.04463124999978
+    },
+    {
+      "name": "members",
+      "schemaName": "public",
+      "x": 372.60138984374964,
+      "y": 301.1905124999997
+    },
+    {
+      "name": "matches",
+      "schemaName": "public",
+      "x": -436.38697500000023,
+      "y": 227.04463124999978
+    },
+    {
+      "name": "match_participants",
+      "schemaName": "public",
+      "x": -410.61901927920934,
+      "y": -113.23744307343804
+    },
+    {
+      "name": "group_field",
+      "schemaName": "public",
+      "x": -318.7370468750001,
+      "y": 462.1734249999996
+    },
+    {
+      "name": "member_field_values",
+      "schemaName": "public",
+      "x": 36.344607377395675,
+      "y": 494.1734249999996
+    },
+    {
+      "name": "invitations",
+      "schemaName": "public",
+      "x": 431.50844002736505,
+      "y": 4.723513376777419
+    }
+  ],
+  "tableGroupCollapseStates": [],
+  "stickyNoteLayouts": [],
+  "referencePaths": [
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "users",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "userId"
+      ],
+      "secondTableName": "members",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "groups",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "groupId"
+      ],
+      "secondTableName": "members",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "groups",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "groupId"
+      ],
+      "secondTableName": "matches",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "users",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "userId"
+      ],
+      "secondTableName": "match_participants",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "matches",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "matchId"
+      ],
+      "secondTableName": "match_participants",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "secondEndpointSide": "left",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "users",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "changedBy"
+      ],
+      "secondTableName": "match_participants",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "groups",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "groupId"
+      ],
+      "secondTableName": "group_field",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "name"
+      ],
+      "firstTableName": "group_field",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "fieldName"
+      ],
+      "secondTableName": "member_field_values",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "members",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "memberId"
+      ],
+      "secondTableName": "member_field_values",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "users",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "usedBy"
+      ],
+      "secondTableName": "invitations",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "users",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "grantedBy"
+      ],
+      "secondTableName": "invitations",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    },
+    {
+      "firstFieldNames": [
+        "id"
+      ],
+      "firstTableName": "groups",
+      "firstSchemaName": "public",
+      "firstRelation": "1",
+      "secondFieldNames": [
+        "groupId"
+      ],
+      "secondTableName": "invitations",
+      "secondSchemaName": "public",
+      "secondRelation": "*",
+      "checkPoints": []
+    }
+  ]
+}

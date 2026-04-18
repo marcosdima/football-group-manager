@@ -1,0 +1,105 @@
+Table users {
+    id int [pk, increment]
+    name varchar [not null]
+    lastName varchar
+    passwordHash varchar [not null]
+}
+
+Table groups {
+    id int [pk, increment]
+    name varchar [not null]
+    description varchar
+}
+
+Table members {
+    userId int [ref: > users.id]
+    groupId int [ref: > groups.id]
+    id int [pk, increment]
+    admin boolean [default: false]
+    nickname varchar [not null]
+    
+    indexes {
+        (userId, groupId) [unique]
+    }
+
+    note: '''
+        1. The first member of a group is an admin by default.
+        4. A member can not be added to the same group more than once.
+    '''
+}
+
+Table matches {
+    id int [pk, increment]
+    groupId int [ref: > groups.id]
+    date datetime [not null]
+    maxParticipants int [not null]
+
+    note: '''
+        1. Only admin members can create matches.
+        2. After the match date is passed, the match can not be modified and new participants can not be added.
+    '''
+}
+
+Enum participation_status {
+    playing
+    pending
+    played
+    cancelled
+    expulsed
+}
+
+Table match_participants {
+    userId int [ref: > users.id]
+    matchId int [ref: > matches.id]
+    status participation_status [default: participation_status.pending]
+    changedBy int [ref: > users.id]
+    changedAt datetime
+
+    indexes {
+        (userId, matchId) [unique, pk]
+    }
+
+    note: '''
+        1. Only admin members can update participation status.
+        2. Members can start as playing without admin approval.
+        3. Outsiders will start as pending.
+        TODO. Status should be a table, registering the history of status changes, and the current status should be a field in match_participants.
+    '''
+}
+
+Table group_field {
+    groupId int [ref: > groups.id]
+    name varchar [not null, pk]
+    description varchar
+    icon varchar
+    
+    indexes {
+        (name, groupId) [unique]
+    }
+}
+
+Table member_field_values {
+    fieldName varchar [ref: > group_field.name]
+    memberId int [ref: > members.id]
+    value varchar
+
+    indexes {
+        (fieldName, memberId) [unique, pk]
+    }
+}
+
+Table invitations {
+    code varchar [pk]
+    usedBy int [ref: > users.id]
+    grantedBy int [ref: > users.id]
+    groupId int [ref: > groups.id]
+    usedAt datetime
+    expiresAt datetime [not null]
+
+    note: '''
+        1. Only admin members can create invitations.
+        2. After usedAt/usedBy are set, they can not be modified and the invitation can not be used again.
+        3. An admin only can generate one invitation at the time.
+        4. usedBy can not be an id of a current member of the group.
+    '''
+}
