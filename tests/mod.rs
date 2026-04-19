@@ -1,9 +1,9 @@
 mod common;
 
-#[cfg(test)]
-mod users;
+#[path = "common/default_data.rs"]
+mod default_data;
 
-pub use crate::common::*;
+mod users;
 
 pub use football_group_manager::{
     create_app_lazy,

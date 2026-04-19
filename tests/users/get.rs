@@ -10,7 +10,7 @@ struct User {
 #[tokio::test]
 async fn test_get_users() {
     let app = common::create_test_app();
-    let default_data = common::defaut_data::get_default_users();
+    let default_data = default_data::get_default_users();
 
     let response = app
         .oneshot(Request::builder().uri("/users").body(Body::empty()).unwrap())

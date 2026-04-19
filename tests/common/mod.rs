@@ -5,8 +5,6 @@ use axum::{
 };
 use std::sync::Once;
 
-pub mod defaut_data;
-
 static INIT: Once = Once::new();
 
 fn init() {
