@@ -1,3 +1,15 @@
-fn main() {
-    println!("Hello, world!");
+use dotenvy::dotenv;
+use football_group_manager::create_app;
+
+#[tokio::main]
+async fn main() {
+    dotenv().ok();
+
+    let app = create_app();
+
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
+        .await
+        .unwrap();
+
+    axum::serve(listener, app).await.unwrap();
 }
