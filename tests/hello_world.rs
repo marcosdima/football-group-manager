@@ -14,7 +14,7 @@ struct HelloResponse {
 
 #[tokio::test]
 async fn test_hello() {
-    let app = common::create_test_app();
+    let (app, _) = common::create_test_app().await;
 
     let response = app
         .oneshot(Request::builder().uri("/hello").body(Body::empty()).unwrap())

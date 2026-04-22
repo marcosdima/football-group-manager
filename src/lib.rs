@@ -1,6 +1,9 @@
 pub mod app;
 pub mod routes;
 pub mod dto;
+pub mod utils;
+pub mod services;
+pub mod models;
 
 use app::{router::create_router, state::AppState};
 use axum::Router;
