@@ -10,9 +10,10 @@ async fn test_get_users() {
     for user_data in &default_data {
         db::create_user(
             &pool,
-            &user_data.name,
+            &user_data.username,
+            &user_data.password,
+            user_data.name.as_deref(),
             user_data.last_name.as_deref(),
-            &user_data.password
         ).await;
     }
 
@@ -28,6 +29,7 @@ async fn test_get_users() {
 
     for i in 0..users.len() {
         let user = &users[i];
+        assert_eq!(default_data[i].username, user.username);
         assert_eq!(default_data[i].name, user.name);
         assert_eq!(default_data[i].last_name, user.last_name);
     }

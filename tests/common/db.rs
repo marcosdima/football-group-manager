@@ -18,13 +18,15 @@ pub async fn get_users_count(pool: &PgPool) -> i64 {
 
 pub async fn create_user(
     pool: &PgPool,
-    name: &str,
+    username: &str,
+    password: &str,
+    name: Option<&str>,
     last_name: Option<&str>,
-    password: &str
 ) -> i32 {
     sqlx::query_scalar::<_, i32>(
-        "INSERT INTO users (name, last_name, password_hash) VALUES ($1, $2, $3) RETURNING id"
+        "INSERT INTO users (username, name, last_name, password_hash) VALUES ($1, $2, $3, $4) RETURNING id"
     )
+        .bind(username)
         .bind(name)
         .bind(last_name)
         .bind(password)

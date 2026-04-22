@@ -27,6 +27,7 @@ async fn test_create_user() {
     
     assert_eq!(parsed_response.name, default_data.name);
     assert_eq!(parsed_response.last_name, default_data.last_name);
+    assert_eq!(parsed_response.username, default_data.username);
     assert!(parsed_response.id > 0);
 
     assert!(db::user_exists_by_id(&pool, parsed_response.id).await);

@@ -1,6 +1,7 @@
 Table users {
     id int [pk, increment]
-    name varchar [not null]
+    username varchar [not null, unique]
+    name varchar
     lastName varchar
     passwordHash varchar [not null]
 }
